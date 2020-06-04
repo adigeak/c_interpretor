@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "common.h"
+#include "compiler.h"
 #include "vm.h"
 #include "debug.h"
 
@@ -44,21 +45,6 @@ static InterpretResult run() {
 		}
 		printf("\n");
 		disassembleInstruction(vm.chunk, (int)(vm.ip - vm.chunk->code));
-void initVM();
-void freeVM();
-InterpretResult interpret(Chunk* chunk);
-
-
-void initVM();
-void freeVM();
-InterpretResult interpret(Chunk* chunk);
-
-
-void initVM();
-void freeVM();
-InterpretResult interpret(Chunk* chunk);
-
-
 #endif
 
 		uint8_t instruction;
@@ -83,8 +69,7 @@ InterpretResult interpret(Chunk* chunk);
 #undef BINARY_OP
 }
 
-InterpretResult interpret(Chunk* chunk) {
-	vm.chunk = chunk;
-	vm.ip = vm.chunk->code;
-	return run();
+InterpretResult interpret(const char* source) {
+	compile(source);
+	return INTERPRET_OK;
 }
