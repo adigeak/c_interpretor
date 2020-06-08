@@ -70,6 +70,21 @@ static InterpretResult run() {
 }
 
 InterpretResult interpret(const char* source) {
-	compile(source);
-	return INTERPRET_OK;
+	Chunk chunk;
+	initChunk(&chunk);
+
+	if (!complie(source, &chunk)) {
+		freeChunk(&chunk);
+		return INTERPRET_COMPILE_ERROR;
+	}
+
+	vm.chunk = &chunk;
+	vm.ip = vm.chunk->code;
+
+	interpretResult result = run();
+
+	freeChunk(&chunk);
+	return result;
+//	compile(source);
+//	return INTERPRET_OK;
 }
