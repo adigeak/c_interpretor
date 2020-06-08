@@ -44,7 +44,7 @@ static char* readFile(const char* path) {
 		exit(74);
 	}
 
-	buffer[byteRead] = '\0';
+	buffer[bytesRead] = '\0';
 	
 	fclose(file);
 	return buffer;

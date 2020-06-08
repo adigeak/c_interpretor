@@ -31,7 +31,8 @@ static bool isNumber(char c) {
 static bool isAtEnd() {
 	return *scanner.current == '\0';
 
-  // Look for a fractional part.             }
+  // Look for a fractional part.             
+}
 
 static char advance() {
         scanner.current++;
@@ -91,7 +92,7 @@ static void skipWhitespace() {
 				advance();
 				break;
 			case '/':
-				if (peekNext() == '/' {
+				if (peekNext() == '/') {
 						//we will move till the end of line
 						while (peek() != '\n' && !isAtEnd()) advance();
 						} else {
